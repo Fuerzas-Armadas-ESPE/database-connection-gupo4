@@ -16,8 +16,8 @@ export class PostsService {
 
   async createPost(postData: any): Promise<any> {
     try {
-      const createdPost = new this.postModel(postData);
-      return await createdPost.save();
+      const createdPost = await this.postModel.create(postData);
+      return await createdPost;
     } catch (error: any) {
       throw new InternalServerErrorException(error.message);
     }
